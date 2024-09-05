@@ -1,0 +1,55 @@
+library ieee;
+use ieee.std_logic_1164.all;
+
+entity soma4bit is
+port (a0,a1,a2,a3 : in bit;
+      b0,b1,b2,b3 : in bit;
+		s0,s1,s2,s3 : out bit;
+		c4 : out bit);
+end soma4bit;
+
+architecture Arq of soma4bit is
+
+component MS is
+Port(a0 : in bit;
+     b0 : in bit;
+	  s0 : out bit;
+	  c0 : out bit);
+end component;
+
+component SC is
+Port(ai : in bit;
+     bi : in bit;
+	  ci : in bit;
+	  s0 : out bit;
+	  cout : out bit);
+end component;
+
+signal c1,c2,c3 : bit;
+
+
+begin
+
+M0: MS port map(a0 => a0,
+                b0 => b0,
+					 c0 => c1,
+					 s0 => s0);
+
+M1: SC port map(ai => a1,
+                bi => b1,
+					 ci => c1,
+					 s0 => s1,
+					 cout => c2);
+
+M2: SC port map(ai => a2,
+                bi => b2,
+					 ci => c2,
+					 s0 => s2,
+					 cout => c3);
+					 
+M3: SC port map(ai => a3,
+                bi => b3,
+					 ci => c3,
+					 s0 => s3,
+					 cout => c4);
+end Arq;

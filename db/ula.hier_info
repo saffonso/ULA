@@ -1,0 +1,364 @@
+|ULA
+a[0] => soma4bits:add_op.a[0]
+a[0] => subtrator:sub_op.a[0]
+a[0] => A_and_B:and_op.a[0]
+a[0] => A_or_B:or_op.a[0]
+a[0] => not_a:not_op.a[0]
+a[0] => shift_l:shift_l_op.a[0]
+a[0] => shift_r:shift_r_op.a[0]
+a[1] => soma4bits:add_op.a[1]
+a[1] => subtrator:sub_op.a[1]
+a[1] => A_and_B:and_op.a[1]
+a[1] => A_or_B:or_op.a[1]
+a[1] => not_a:not_op.a[1]
+a[1] => shift_l:shift_l_op.a[1]
+a[1] => shift_r:shift_r_op.a[1]
+a[2] => soma4bits:add_op.a[2]
+a[2] => subtrator:sub_op.a[2]
+a[2] => A_and_B:and_op.a[2]
+a[2] => A_or_B:or_op.a[2]
+a[2] => not_a:not_op.a[2]
+a[2] => shift_l:shift_l_op.a[2]
+a[2] => shift_r:shift_r_op.a[2]
+a[3] => soma4bits:add_op.a[3]
+a[3] => subtrator:sub_op.a[3]
+a[3] => A_and_B:and_op.a[3]
+a[3] => A_or_B:or_op.a[3]
+a[3] => not_a:not_op.a[3]
+a[3] => shift_l:shift_l_op.a[3]
+a[3] => shift_r:shift_r_op.a[3]
+b[0] => soma4bits:add_op.b[0]
+b[0] => subtrator:sub_op.b[0]
+b[0] => A_and_B:and_op.b[0]
+b[0] => A_or_B:or_op.b[0]
+b[1] => soma4bits:add_op.b[1]
+b[1] => subtrator:sub_op.b[1]
+b[1] => A_and_B:and_op.b[1]
+b[1] => A_or_B:or_op.b[1]
+b[2] => soma4bits:add_op.b[2]
+b[2] => subtrator:sub_op.b[2]
+b[2] => A_and_B:and_op.b[2]
+b[2] => A_or_B:or_op.b[2]
+b[3] => soma4bits:add_op.b[3]
+b[3] => subtrator:sub_op.b[3]
+b[3] => A_and_B:and_op.b[3]
+b[3] => A_or_B:or_op.b[3]
+v <= v.DB_MAX_OUTPUT_PORT_TYPE
+z <= Mux4.DB_MAX_OUTPUT_PORT_TYPE
+c <= c.DB_MAX_OUTPUT_PORT_TYPE
+n <= subtrator:sub_op.n
+AUX_1[0] <= AUX_1[0].DB_MAX_OUTPUT_PORT_TYPE
+AUX_1[1] <= AUX_1[1].DB_MAX_OUTPUT_PORT_TYPE
+AUX_2[0] <= comb.DB_MAX_OUTPUT_PORT_TYPE
+AUX_2[1] <= AUX_2[1].DB_MAX_OUTPUT_PORT_TYPE
+sel[0] => Mux0.IN3
+sel[0] => Mux1.IN3
+sel[0] => Mux2.IN3
+sel[0] => Mux3.IN3
+sel[1] => Mux0.IN2
+sel[1] => Mux1.IN2
+sel[1] => Mux2.IN2
+sel[1] => Mux3.IN2
+sel[2] => Mux0.IN1
+sel[2] => Mux1.IN1
+sel[2] => Mux2.IN1
+sel[2] => Mux3.IN1
+y[0] <= Mux3.DB_MAX_OUTPUT_PORT_TYPE
+y[1] <= Mux2.DB_MAX_OUTPUT_PORT_TYPE
+y[2] <= Mux1.DB_MAX_OUTPUT_PORT_TYPE
+y[3] <= Mux0.DB_MAX_OUTPUT_PORT_TYPE
+s[0] <= bits_7_display:convert_to_7_display.s[0]
+s[1] <= bits_7_display:convert_to_7_display.s[1]
+s[2] <= bits_7_display:convert_to_7_display.s[2]
+s[3] <= bits_7_display:convert_to_7_display.s[3]
+s[4] <= bits_7_display:convert_to_7_display.s[4]
+s[5] <= bits_7_display:convert_to_7_display.s[5]
+s[6] <= bits_7_display:convert_to_7_display.s[6]
+s[7] <= bits_7_display:convert_to_7_display.s[7]
+s[8] <= bits_7_display:convert_to_7_display.s[8]
+s[9] <= bits_7_display:convert_to_7_display.s[9]
+s[10] <= bits_7_display:convert_to_7_display.s[10]
+s[11] <= bits_7_display:convert_to_7_display.s[11]
+s[12] <= bits_7_display:convert_to_7_display.s[12]
+s[13] <= bits_7_display:convert_to_7_display.s[13]
+
+
+|ULA|soma4bits:add_op
+a[0] => MS:M0.a0
+a[1] => SC:M1.ai
+a[2] => SC:M2.ai
+a[3] => SC:M3.ai
+b[0] => MS:M0.b0
+b[1] => SC:M1.bi
+b[2] => SC:M2.bi
+b[3] => SC:M3.bi
+s[0] <= MS:M0.s0
+s[1] <= SC:M1.s0
+s[2] <= SC:M2.s0
+s[3] <= SC:M3.s0
+V <= V.DB_MAX_OUTPUT_PORT_TYPE
+Z <= Z.DB_MAX_OUTPUT_PORT_TYPE
+N <= SC:M3.s0
+carry <= SC:M3.cout
+
+
+|ULA|soma4bits:add_op|MS:M0
+a0 => s0.IN0
+a0 => c0.IN0
+b0 => s0.IN1
+b0 => c0.IN1
+s0 <= s0.DB_MAX_OUTPUT_PORT_TYPE
+c0 <= c0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|ULA|soma4bits:add_op|SC:M1
+ai => s0.IN0
+ai => cout.IN0
+ai => cout.IN0
+bi => s0.IN1
+bi => cout.IN1
+bi => cout.IN0
+ci => s0.IN1
+ci => cout.IN1
+ci => cout.IN1
+s0 <= s0.DB_MAX_OUTPUT_PORT_TYPE
+cout <= cout.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|ULA|soma4bits:add_op|SC:M2
+ai => s0.IN0
+ai => cout.IN0
+ai => cout.IN0
+bi => s0.IN1
+bi => cout.IN1
+bi => cout.IN0
+ci => s0.IN1
+ci => cout.IN1
+ci => cout.IN1
+s0 <= s0.DB_MAX_OUTPUT_PORT_TYPE
+cout <= cout.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|ULA|soma4bits:add_op|SC:M3
+ai => s0.IN0
+ai => cout.IN0
+ai => cout.IN0
+bi => s0.IN1
+bi => cout.IN1
+bi => cout.IN0
+ci => s0.IN1
+ci => cout.IN1
+ci => cout.IN1
+s0 <= s0.DB_MAX_OUTPUT_PORT_TYPE
+cout <= cout.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|ULA|subtrator:sub_op
+a[0] => SC:M0.ai
+a[1] => SC:M1.ai
+a[2] => SC:M2.ai
+a[3] => SC:M3.ai
+b[0] => SC:M0.bi
+b[1] => SC:M1.bi
+b[2] => SC:M2.bi
+b[3] => SC:M3.bi
+s[0] <= SC:M0.s0
+s[1] <= SC:M1.s0
+s[2] <= SC:M2.s0
+s[3] <= SC:M3.s0
+v <= v.DB_MAX_OUTPUT_PORT_TYPE
+z <= z.DB_MAX_OUTPUT_PORT_TYPE
+n <= SC:M3.s0
+carry <= SC:M3.cout
+
+
+|ULA|subtrator:sub_op|SC:M0
+ai => s0.IN0
+ai => cout.IN0
+ai => cout.IN0
+bi => s0.IN1
+bi => cout.IN1
+bi => cout.IN0
+ci => s0.IN1
+ci => cout.IN1
+ci => cout.IN1
+s0 <= s0.DB_MAX_OUTPUT_PORT_TYPE
+cout <= cout.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|ULA|subtrator:sub_op|SC:M1
+ai => s0.IN0
+ai => cout.IN0
+ai => cout.IN0
+bi => s0.IN1
+bi => cout.IN1
+bi => cout.IN0
+ci => s0.IN1
+ci => cout.IN1
+ci => cout.IN1
+s0 <= s0.DB_MAX_OUTPUT_PORT_TYPE
+cout <= cout.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|ULA|subtrator:sub_op|SC:M2
+ai => s0.IN0
+ai => cout.IN0
+ai => cout.IN0
+bi => s0.IN1
+bi => cout.IN1
+bi => cout.IN0
+ci => s0.IN1
+ci => cout.IN1
+ci => cout.IN1
+s0 <= s0.DB_MAX_OUTPUT_PORT_TYPE
+cout <= cout.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|ULA|subtrator:sub_op|SC:M3
+ai => s0.IN0
+ai => cout.IN0
+ai => cout.IN0
+bi => s0.IN1
+bi => cout.IN1
+bi => cout.IN0
+ci => s0.IN1
+ci => cout.IN1
+ci => cout.IN1
+s0 <= s0.DB_MAX_OUTPUT_PORT_TYPE
+cout <= cout.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|ULA|A_and_B:and_op
+a[0] => s.IN0
+a[1] => s.IN0
+a[2] => s.IN0
+a[3] => s.IN0
+b[0] => s.IN1
+b[1] => s.IN1
+b[2] => s.IN1
+b[3] => s.IN1
+s[0] <= s.DB_MAX_OUTPUT_PORT_TYPE
+s[1] <= s.DB_MAX_OUTPUT_PORT_TYPE
+s[2] <= s.DB_MAX_OUTPUT_PORT_TYPE
+s[3] <= s.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|ULA|A_or_B:or_op
+a[0] => s.IN0
+a[1] => s.IN0
+a[2] => s.IN0
+a[3] => s.IN0
+b[0] => s.IN1
+b[1] => s.IN1
+b[2] => s.IN1
+b[3] => s.IN1
+s[0] <= s.DB_MAX_OUTPUT_PORT_TYPE
+s[1] <= s.DB_MAX_OUTPUT_PORT_TYPE
+s[2] <= s.DB_MAX_OUTPUT_PORT_TYPE
+s[3] <= s.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|ULA|not_a:not_op
+a[0] => s[0].DATAIN
+a[1] => s[1].DATAIN
+a[2] => s[2].DATAIN
+a[3] => s[3].DATAIN
+s[0] <= a[0].DB_MAX_OUTPUT_PORT_TYPE
+s[1] <= a[1].DB_MAX_OUTPUT_PORT_TYPE
+s[2] <= a[2].DB_MAX_OUTPUT_PORT_TYPE
+s[3] <= a[3].DB_MAX_OUTPUT_PORT_TYPE
+
+
+|ULA|shift_l:shift_l_op
+a[0] => ~NO_FANOUT~
+a[1] => s[0].DATAIN
+a[2] => s[1].DATAIN
+a[3] => s[2].DATAIN
+s[0] <= a[1].DB_MAX_OUTPUT_PORT_TYPE
+s[1] <= a[2].DB_MAX_OUTPUT_PORT_TYPE
+s[2] <= a[3].DB_MAX_OUTPUT_PORT_TYPE
+s[3] <= <GND>
+
+
+|ULA|shift_r:shift_r_op
+a[0] => s[1].DATAIN
+a[1] => s[2].DATAIN
+a[2] => s[3].DATAIN
+a[3] => ~NO_FANOUT~
+s[0] <= <GND>
+s[1] <= a[0].DB_MAX_OUTPUT_PORT_TYPE
+s[2] <= a[1].DB_MAX_OUTPUT_PORT_TYPE
+s[3] <= a[2].DB_MAX_OUTPUT_PORT_TYPE
+
+
+|ULA|bits_7_display:convert_to_7_display
+binary_input[0] => Mux4.IN36
+binary_input[0] => Mux5.IN36
+binary_input[0] => Mux6.IN36
+binary_input[0] => Mux7.IN36
+binary_input[0] => Mux8.IN36
+binary_input[0] => Mux9.IN36
+binary_input[0] => Mux10.IN36
+binary_input[1] => Mux0.IN19
+binary_input[1] => Mux1.IN19
+binary_input[1] => Mux2.IN19
+binary_input[1] => Mux3.IN19
+binary_input[1] => Mux4.IN35
+binary_input[1] => Mux5.IN35
+binary_input[1] => Mux6.IN35
+binary_input[1] => Mux7.IN35
+binary_input[1] => Mux8.IN35
+binary_input[1] => Mux9.IN35
+binary_input[1] => Mux10.IN35
+binary_input[2] => Mux0.IN18
+binary_input[2] => Mux1.IN18
+binary_input[2] => Mux2.IN18
+binary_input[2] => Mux3.IN18
+binary_input[2] => Mux4.IN34
+binary_input[2] => Mux5.IN34
+binary_input[2] => Mux6.IN34
+binary_input[2] => Mux7.IN34
+binary_input[2] => Mux8.IN34
+binary_input[2] => Mux9.IN34
+binary_input[2] => Mux10.IN34
+binary_input[3] => Mux0.IN17
+binary_input[3] => Mux1.IN17
+binary_input[3] => Mux2.IN17
+binary_input[3] => Mux3.IN17
+binary_input[3] => Mux4.IN33
+binary_input[3] => Mux5.IN33
+binary_input[3] => Mux6.IN33
+binary_input[3] => Mux7.IN33
+binary_input[3] => Mux8.IN33
+binary_input[3] => Mux9.IN33
+binary_input[3] => Mux10.IN33
+binary_input[4] => Mux0.IN16
+binary_input[4] => Mux1.IN16
+binary_input[4] => Mux2.IN16
+binary_input[4] => Mux3.IN16
+binary_input[4] => Mux4.IN32
+binary_input[4] => Mux5.IN32
+binary_input[4] => Mux6.IN32
+binary_input[4] => Mux7.IN32
+binary_input[4] => Mux8.IN32
+binary_input[4] => Mux9.IN32
+binary_input[4] => Mux10.IN32
+binary_input[4] => s[9].DATAIN
+binary_input[4] => s[8].DATAIN
+binary_input[4] => s[13].DATAIN
+s[0] <= Mux10.DB_MAX_OUTPUT_PORT_TYPE
+s[1] <= Mux9.DB_MAX_OUTPUT_PORT_TYPE
+s[2] <= Mux8.DB_MAX_OUTPUT_PORT_TYPE
+s[3] <= Mux7.DB_MAX_OUTPUT_PORT_TYPE
+s[4] <= Mux6.DB_MAX_OUTPUT_PORT_TYPE
+s[5] <= Mux5.DB_MAX_OUTPUT_PORT_TYPE
+s[6] <= Mux4.DB_MAX_OUTPUT_PORT_TYPE
+s[7] <= Mux3.DB_MAX_OUTPUT_PORT_TYPE
+s[8] <= binary_input[4].DB_MAX_OUTPUT_PORT_TYPE
+s[9] <= binary_input[4].DB_MAX_OUTPUT_PORT_TYPE
+s[10] <= Mux2.DB_MAX_OUTPUT_PORT_TYPE
+s[11] <= Mux1.DB_MAX_OUTPUT_PORT_TYPE
+s[12] <= Mux0.DB_MAX_OUTPUT_PORT_TYPE
+s[13] <= binary_input[4].DB_MAX_OUTPUT_PORT_TYPE
+
+

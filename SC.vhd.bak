@@ -1,0 +1,15 @@
+entity SC is
+Port(ai : in bit;
+     bi : in bit;
+	  ci : in bit;
+	  s0 : out bit;
+	  cout : out bit);
+end SC;
+
+architecture Arq of SC is
+begin
+
+s0 <= ai xor bi xor ci;
+cout <= (ai and bi) or (ai and ci) or (bi and ci);
+
+end Arq;

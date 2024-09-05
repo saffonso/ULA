@@ -1,0 +1,16 @@
+
+entity MS is
+Port(a0 : in bit;
+     b0 : in bit;
+	  s0 : out bit;
+	  c0 : out bit);
+end MS;
+
+architecture Arq of MS is
+begin
+
+s0 <= a0 xor b0;
+c0 <= a0 and b0;
+
+
+end Arq;

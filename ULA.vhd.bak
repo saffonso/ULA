@@ -1,0 +1,133 @@
+LIBRARY IEEE;
+USE IEEE.std_logic_1164.all;
+
+
+entity ULA is 
+Port(
+		a,b : in std_logic_vector(3 downto 0);
+		v,z, c : out std_logic;
+		n : buffer std_logic_vector(3 downto 0);
+		sel : in std_logic_vector(2 downto 0);
+		result: in std_logic_vector(7 downto 0);
+		y : buffer std_logic_vector(3 downto 0);
+		s : out std_logic_vector(3 downto 0)
+);
+
+
+architecture arq_ula of ULA is
+
+SIGNAL z_local, n_local: std_logic_vector(4 downto 0);
+SIGNAL v_local, c_local: std_logic_vector(4 downto 0);
+
+
+component soma4bits
+port (a : in std_logic_vector(3 downto 0);
+      b : in std_logic_vector(3 downto 0);
+		s: out std_logic_vector(3 downto 0);
+		carry: out std_logic_vector(1 downto 0)
+		);
+end component;
+
+component A_and_B
+Port(
+	a,b : in std_logic_vector(3 downto 0 );
+	s : out std_logic_vector(3 downto 0 )
+);
+end component;
+
+component A_or_B
+Port(
+
+	a,b : in std_logic_vector(3 downto 0);
+	s : out std_logic_vector(3 downto 0)
+);
+end component;
+
+component not_a
+Port(
+
+	a : in std_logic_vector(3 downto 0);
+	s : out std_logic_vector(3 downto 0)
+);
+end component;
+
+component subtrator 
+port (a : in std_logic_vector(3 downto 0);
+      b : in std_logic_vector(3 downto 0);
+		s: out std_logic_vector(3 downto 0);
+		v : out std_logic;
+		carry : out std_logic
+		);
+end component;
+
+component shift_r
+PORT(
+		a: in std_logic_vector(3 downto 0);
+		s: out std_logic_vector(3 downto 0)
+	);
+end component;
+
+component shift_l
+PORT(
+		a: in std_logic_vector(3 downto 0);
+		s: out std_logic_vector(3 downto 0)
+	);
+end component;
+
+component add
+PORT(
+		a, b: in std_logic_vector(3 downto 0);
+		v, z, n: out std_logic
+	);
+end component;
+
+component bits_7_display
+PORT(
+		binary_input: in std_logic_vector(4 downto 0);
+		s: out std_logic_vector(13 downto 0)
+	);
+end component;
+
+begin
+
+	add_op: soma4bits
+		port map(a => a,
+               b => b,
+					s => result(0));
+	sub_op : subtrator
+		port map(a => a,
+					b => b,
+					s => result(1));
+	and_op : A_and_B
+		port map(a => a,
+					b => b,
+					s => result(4));
+	or_op : A_or_B
+		port map(a => a,
+					b => b,
+					s => result(5));
+	not_op : not_a
+		port map(a => a,
+					s => result(6));
+	shift_l_op : shift_l
+		port map(a => a,
+					s => result(2));
+	shift_r_op : shift_r
+		port map(a => a,
+					s => result(3));
+	with sel select
+		y <=             result(0) when "000", -- add
+							  result(1) when "001", -- sub
+							  result(2) when "010", -- shift left
+							  result(3) when "011", -- shift right
+							  result(4) when "100", -- and
+							  result(5) when "101", -- or
+							  result(6) when "110", -- not
+							  "111" when others; -- null
+		
+	 
+					
+					
+					
+end arq_ula;					
+					
